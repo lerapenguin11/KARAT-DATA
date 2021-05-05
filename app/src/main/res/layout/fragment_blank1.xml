@@ -48,9 +48,6 @@
             app:suffixTextColor="@color/c_label"
             tools:ignore="NotSibling">
 
-            <!--this is the actual edit text which takes the input-->
-
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_date"
                 android:layout_width="match_parent"
@@ -86,7 +83,6 @@
             app:startIconTint="@color/c_text_light"
             app:suffixTextColor="@color/c_label"
             tools:ignore="NotSibling">
-
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_setting"
