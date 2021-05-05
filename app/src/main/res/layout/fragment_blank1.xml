@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_blank1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.BlankFragment1">
@@ -59,14 +60,14 @@
 
         <ImageButton
             android:id="@+id/img_data"
-            android:layout_width="10dp"
-            android:layout_height="42dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="420dp"
-            android:layout_marginTop="110dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="40dp"
+            android:layout_height="10dp"
+            android:layout_alignTop="@+id/filledTextField2"
+            android:layout_alignEnd="@+id/filledTextField2"
+            android:layout_alignBottom="@+id/filledTextField2"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="3dp"
             android:layout_weight="1"
             android:background="@color/c_light_mint"
             android:src="@drawable/ic_calendar_foreground"
@@ -96,15 +97,14 @@
 
         <ImageButton
             android:id="@+id/img_setting"
-            android:layout_width="10dp"
-            android:layout_height="41dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="420dp"
-            android:layout_marginTop="185dp"
-            android:layout_marginEnd="25dp"
-            android:layout_weight="1"
+            android:layout_width="40dp"
+            android:layout_height="10dp"
+            android:layout_alignTop="@+id/filledTextField3"
+            android:layout_alignEnd="@+id/filledTextField3"
+            android:layout_alignBottom="@+id/filledTextField3"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="3dp"
             android:background="@color/c_light_mint"
             android:src="@drawable/ic_pencil_foreground" />
 
@@ -247,6 +247,4 @@
             android:theme="@style/CheckboxStyle"
             app:useMaterialThemeColors="false" />
     </RelativeLayout>
-
-
-</FrameLayout>
+</ScrollView>
