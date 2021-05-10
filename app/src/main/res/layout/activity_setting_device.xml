@@ -5,15 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SettingDeviceActivity"
-    android:background="@color/c_light_mint">
+    android:background="@color/c_light_mint"
+    android:screenOrientation="landscape"
+    android:orientation="vertical">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.KARATDATA.AppBarOverlay"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+            android:id="@+id/img_karat"
+            android:layout_width="122dp"
+            android:layout_height="58dp"
+            android:background="@color/c_toolbar"
+            app:srcCompat="@mipmap/ic_k_d_foreground" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/text_setting_device"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/raleway_medium"
+        android:text="@string/text_setting_device"
+        android:textColor="@color/c_text_light"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:ignore="MissingConstraints" />
 
     <RadioButton
         android:id="@+id/usb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:text="USB"
+        android:text="@string/text_usb"
         android:textSize="16sp"
         android:textColor="@color/c_text_light"
         android:onClick="onRadioButtonClicked"
@@ -21,47 +51,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tsp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
-        android:fontFamily="@font/raleway_medium"
-        android:text="Выберите способ предачи"
-        android:textColor="@color/c_text_light"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
     <RadioButton
         android:id="@+id/tsp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="5dp"
-        android:text="TCP"
+        android:text="@string/text_tsp"
         android:textColor="@color/c_text_light"
         android:textSize="16sp"
         android:onClick="onRadioButtonClicked"
         android:theme="@style/RadioButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <!--this is the actual edit text which takes the input-->
+        app:layout_constraintTop_toBottomOf="@+id/text_setting_device" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filledTextField"
+        android:id="@+id/text_field_port"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/filledTextField2"
+        android:layout_alignBottom="@+id/text_field_ip"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="90dp"
         android:layout_marginEnd="16dp"
-        android:hint="Введите Port"
+        android:hint="@string/text_input_port"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,22 +90,23 @@
             android:layout_height="50dp"
             android:layout_marginStart="0dp"
             android:layout_marginTop="92dp"
+            android:textColor="@color/c_label"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/usb"
             tools:ignore="MissingConstraints" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filledTextField2"
+        android:id="@+id/text_field_ip"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/filledTextField2"
+        android:layout_alignBottom="@+id/text_field_ip"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
-        android:hint="Введите IP адрес"
+        android:hint="@string/text_input_ip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,27 +119,11 @@
             android:id="@+id/edit_text_ip"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:textColor="@color/c_label"
             app:layout_constraintTop_toBottomOf="@+id/usb"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="13dp" />
-
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Spinner
-        android:id="@+id/spinner_usb"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="16dp"
-        android:entries="@array/spinner_array_usb"
-        android:textSize="35sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usb"
-        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_save"
@@ -135,7 +134,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/с_turquoise"
-        android:foreground="@drawable/ic_save2_foreground"
+        android:foreground="@drawable/ic_save_foreground"
         app:backgroundTint="@color/с_turquoise"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -156,4 +155,33 @@
         app:layout_constraintBottom_toTopOf="@+id/fab_save"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_field_address"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Введите адрес прибора (slaveId)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_field_port"
+        app:startIconTint="@color/c_text_light"
+        app:suffixTextColor="@color/c_label"
+        tools:ignore="MissingConstraints,NotSibling">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_address"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/c_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_field_port"
+            tools:ignore="MissingConstraints" />
+    </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

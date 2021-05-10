@@ -10,27 +10,45 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 
-public class SettingDeviceActivity extends AppCompatActivity {
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
-    EditText port;
-    EditText ip;
+public class SettingDeviceActivity extends AppCompatActivity {
+    FloatingActionButton floatingActionButton_close;
+    TextInputLayout field_address, field_port, field_ip;
+    TextInputEditText address, port, ip;
     RadioButton radioTCP, radioUSB;
-    Spinner spinner_usb;
     Boolean mode = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_device);
+        field_address = findViewById(R.id.text_field_address);
+        field_ip = findViewById(R.id.text_field_ip);
+        field_port = findViewById(R.id.text_field_port);
         port = findViewById(R.id.edit_text_port);
         ip = findViewById(R.id.edit_text_ip);
+        address = findViewById(R.id.edit_text_address);
+        address.setVisibility(View.GONE);
         ip.setVisibility(View.GONE);
         port.setVisibility(View.GONE);
+        field_port.setVisibility(View.GONE);
+        field_ip.setVisibility(View.GONE);
+        field_address.setVisibility(View.GONE);
         radioTCP = (RadioButton) findViewById(R.id.tsp);
         radioUSB = (RadioButton) findViewById(R.id.usb);
-        spinner_usb = findViewById(R.id.spinner_usb);
-        spinner_usb.setVisibility(View.GONE);
+        floatingActionButton_close = findViewById(R.id.fab_close);
 
+        floatingActionButton_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SettingDeviceActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         switch(view.getId()) {
@@ -45,9 +63,12 @@ public class SettingDeviceActivity extends AppCompatActivity {
 
     private void enableUSB() {
         radioTCP.setChecked(true);
-        spinner_usb.setVisibility(View.VISIBLE);
         ip.setVisibility(View.GONE);
         port.setVisibility(View.GONE);
+        address.setVisibility(View.GONE);
+        field_port.setVisibility(View.GONE);
+        field_ip.setVisibility(View.GONE);
+        field_address.setVisibility(View.GONE);
         radioTCP.setChecked(false);
         mode = false;
     }
@@ -56,7 +77,10 @@ public class SettingDeviceActivity extends AppCompatActivity {
         radioUSB.setChecked(true);
         ip.setVisibility(View.VISIBLE);
         port.setVisibility(View.VISIBLE);
-        spinner_usb.setVisibility(View.GONE);
+        address.setVisibility(View.VISIBLE);
+        field_port.setVisibility(View.VISIBLE);
+        field_ip.setVisibility(View.VISIBLE);
+        field_address.setVisibility(View.VISIBLE);
         radioUSB.setChecked(false);
         mode = true;
     }
